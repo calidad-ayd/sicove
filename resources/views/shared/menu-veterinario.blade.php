@@ -1,5 +1,0 @@
-@include('shared.item-option-box', ['route' => route('dashboard') , 'image' => 'dashboard', 'title' => __('menu.dashboard'), 'subtitle' =>  __('menu.dashboard.subtitle')])
-@include('shared.item-option-box', ['route' => route('clients'), 'image' => 'team', 'title' => __('menu.clients') , 'subtitle' => __('menu.clients.subtitle')])
-@include('shared.item-option-box', ['route' => route('veterinary_list'), 'image' => 'veterinary', 'title' => __('menu.veterinaries') , 'subtitle' => __('menu.veterinaries.subtitle')])
-@include('shared.item-option-box', ['route' => route('diseases_list'), 'image' => 'virus', 'title' => __('menu.diseases') , 'subtitle' => __('menu.diseases.subtitle')])
-@include('shared.item-option-box', ['route' => route('vaccines_list'), 'image' => 'vaccine', 'title' => __('menu.vaccines') , 'subtitle' => __('menu.vaccines.subtitle')])

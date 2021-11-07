@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Auth;
+use App;
+
+class Translate
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        if (Auth::user()) {
+            $lang = Auth::user()->language;
+        } else {
+            $lang = 'es';
+        }
+
+        App::setLocale($lang);
+
+        return $next($request);
+    }
+}
