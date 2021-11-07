@@ -1,0 +1,40 @@
+stages:
+  - deploy
+
+deploy-develop:
+  stage: deploy
+  image: alpine:latest
+
+  before_script:
+    - apk add --update openssh
+    - mkdir -p ~/.ssh
+    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+
+  script:
+    - ssh -p 22 -o StrictHostKeyChecking=no root@146.59.146.21 "cd ~ && cd /var/www/staging/web && chmod 777 deploy.sh && ./deploy.sh"
+
+  environment:
+    name: staging
+
+  only:
+    - develop
+
+deploy-master:
+  stage: deploy
+  image: alpine:latest
+
+  before_script:
+    - apk add --update openssh
+    - mkdir -p ~/.ssh
+    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+
+  script:
+    - ssh -p 22 -o StrictHostKeyChecking=no root@146.59.146.21 "cd ~ && cd /var/www/production/web && chmod 777 deploy.sh && ./deploy.sh"
+
+  environment:
+    name: production
+
+  only:
+    - master
