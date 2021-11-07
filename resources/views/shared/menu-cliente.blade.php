@@ -1,0 +1,4 @@
+@include('shared.item-option-box', ['route' => route('dashboard') , 'image' => 'dashboard', 'title' => __('menu.dashboard'), 'subtitle' => __('menu.dashboard.subtitle')])
+@include('shared.item-option-box', ['route' => route('citas_index'), 'image' => 'schedule', 'title' => __('menu.events') , 'subtitle' => __('menu.events.subtitle')])
+@include('shared.item-option-box', ['route' => route('clients_show', ['id' => auth()->user()->client->id]), 'image' => 'pets', 'title' => __('menu.pets') , 'subtitle' => __('menu.pets.subtitle')])
+@include('shared.item-option-box', ['route' => route('clients_edit', ['id' => auth()->user()->client->id]), 'image' => 'my-data', 'title' => __('menu.data') , 'subtitle' => __('menu.data.subtitle')])
